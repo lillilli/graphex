@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="root">
     <div class="navigation">
       <div v-for="file in files" class="tab" @click="changeFile(file)">
         {{file}}
@@ -70,7 +70,7 @@
     margin: 0;
   }
 
-  #app {
+  #root {
     font-family: Helvetica, sans-serif;
     text-align: center;
     display: flex;
