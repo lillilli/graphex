@@ -1,6 +1,7 @@
 package subscribe
 
 import (
+	"github.com/lillilli/graphex/server/events"
 	"github.com/lillilli/graphex/server/hub"
 	"github.com/lillilli/graphex/watcher"
 )
@@ -13,5 +14,5 @@ type RootSubscribeHandler struct {
 
 func (h RootSubscribeHandler) Handle(client *hub.Client, data []byte) {
 	h.Emitter.RemoveSubscriberForFile(client.CurrentFile, client)
-	client.SendJSON("root_subscribe", h.Watcher.State)
+	client.SendJSON(events.RootSubscribeEvent, h.Watcher.State)
 }

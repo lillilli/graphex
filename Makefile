@@ -43,7 +43,7 @@ run\:image: # Run image.
 	echo "Running ..."
 	docker build -t graphex .
 	docker stop graphex_instance || true && docker rm -f graphex_instance || true
-	docker run -p 8081:8081 --name graphex_instance -v  $(PWD)/shared:/root/shared graphex
+	docker run -p 8081:8081 --name graphex_instance -v $(PWD)/shared:/root/shared graphex
 
 deploy: # Deploy docker image to docker hub.
 	echo "Deploying ..."

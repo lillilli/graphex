@@ -3,6 +3,7 @@ package subscribe
 import (
 	"encoding/json"
 
+	"github.com/lillilli/graphex/server/events"
 	"github.com/lillilli/graphex/server/hub"
 	"github.com/lillilli/graphex/watcher"
 )
@@ -21,18 +22,18 @@ func (h FileSubscribeHandler) Handle(client *hub.Client, data []byte) {
 	params := new(FileSubscribeParams)
 
 	if err := json.Unmarshal(data, &params); err != nil {
-		client.SendJSON("file_subscribe", "parsing params failed")
+		client.SendJSON(events.FileSubscribeEvent, "parsing params failed")
 		return
 	}
 
 	b, err := h.Watcher.FileState(params.FileName)
 	if err != nil {
-		client.SendJSON("file_subscribe", "reading file failed")
+		client.SendJSON(events.FileSubscribeEvent, "reading file failed")
 		return
 	}
 
 	h.Emitter.RemoveSubscriberForFile(client.CurrentFile, client)
 	h.Emitter.AddSubscriberForFile(params.FileName, client)
-	client.SendJSON("file_subscribe", b)
+	client.SendJSON(events.FileSubscribeEvent, b)
 	client.CurrentFile = params.FileName
 }

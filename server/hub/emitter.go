@@ -96,7 +96,7 @@ func (e *eventEmitter) AddSubscriberForRoot(client *Client) {
 	e.subscribersOnRoot = append(e.subscribersOnRoot, client)
 	e.Unlock()
 
-	client.SendJSON("root_subscribe", e.watcher.State())
+	client.SendJSON(events.RootSubscribeEvent, e.watcher.State())
 }
 
 func (e *eventEmitter) AddSubscriberForFile(fileName string, client *Client) {

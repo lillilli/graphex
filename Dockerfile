@@ -23,10 +23,12 @@ RUN make setup && make build_scratch
 
 
 # result container
-FROM scratch as service_runner
+FROM alpine as service_runner
 
 ENV SERVICE_NAME websocket_api
 ENV PKG github.com/lillilli/graphex
+
+WORKDIR /root/
 
 COPY --from=service_builder /go/src/${PKG}/frontend ./frontend
 COPY --from=service_builder /go/src/${PKG}/shared ./shared
