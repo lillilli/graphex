@@ -1,7 +1,7 @@
 idea
 .idea/
 .vscode/
-.DS_STORE
+.DS_Store
 
 vendor/
 shared/
