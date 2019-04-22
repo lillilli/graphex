@@ -1,0 +1,12 @@
+idea
+.idea/
+.vscode/
+.DS_STORE
+
+vendor/
+shared/
+
+local.yml
+prod.yml
+
+cmd/websocket_api/websocket_api

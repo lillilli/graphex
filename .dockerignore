@@ -1,0 +1,11 @@
+idea
+.idea/
+.vscode/
+
+vendor/
+fontend/dist/
+fontend/node_modules/
+
+local.yml
+
+cmd/websocket_api/websocket_api

@@ -1,0 +1,5 @@
+Log:
+  MinLevel: INFO
+
+WatchDir: ../../shared
+FrontendDistPath: ../../frontend/dist
