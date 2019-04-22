@@ -47,6 +47,6 @@ make run
 3. Launch image (will be available on localhost:8081).
 
 ```bash
-git clone https://github.com/lillilli/http_file_server.git && cd http_file_server
+git clone https://github.com/lillilli/graphex.git && cd graphex
 make run:image
 ```
