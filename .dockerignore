@@ -1,10 +1,10 @@
 idea
-.idea/
-.vscode/
+.idea
+.vscode
 
-vendor/
-fontend/dist/
-fontend/node_modules/
+vendor
+fontend/dist
+fontend/node_modules
 
 local.yml
 

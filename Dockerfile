@@ -1,3 +1,10 @@
+# frontend build stage
+FROM node:10.6.0 as frontend_builder
+WORKDIR /frontend
+COPY ./frontend /frontend
+RUN npm install && npm i -g fs &&  npm run build && ls && pwd
+
+
 # stage for caching modules
 FROM golang:1.12 as build_base
 
@@ -30,7 +37,7 @@ ENV PKG github.com/lillilli/graphex
 
 WORKDIR /root/
 
-COPY --from=service_builder /go/src/${PKG}/frontend ./frontend
+COPY --from=frontend_builder /frontend/dist ./frontend/dist
 COPY --from=service_builder /go/src/${PKG}/shared ./shared
 
 COPY --from=service_builder /go/src/${PKG}/prod.yml .
